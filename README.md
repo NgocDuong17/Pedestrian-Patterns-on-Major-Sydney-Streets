@@ -41,6 +41,8 @@ Designed a star schema:
 - Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
 - KPI Cards showing the % short-term and long-term pedestrian movement changes (4-day moving average and 52 days in turn)
 
+  ![image](https://github.com/user-attachments/assets/8df619e2-dd9f-4fa6-b70f-3c70ca98afa5)
+
 
 
 ## 🔍 **Insights Discovered**
@@ -50,7 +52,7 @@ Designed a star schema:
 - Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities.Park Street recorded the highest overall foot traffic across all periods.
 - Market Street followed closely as the second busiest street.
 - Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
-- 
+  
 
 ## 💡 **Business Recommendations**
 - Retailers and food outlets on Park and Market Streets should prioritize staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
@@ -58,3 +60,5 @@ Designed a star schema:
 - Consider pedestrian flow improvements (crosswalks, signage) in high-traffic areas to improve safety and flow.
 - Use peak hours and peak locations for launching marketing campaigns or city events
 - Digital signboards and billboards will see maximum impressions in Park and Market Streets during Feb–Mar and Nov–Dec.
+
+
