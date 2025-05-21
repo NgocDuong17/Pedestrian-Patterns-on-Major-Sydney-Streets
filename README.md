@@ -53,7 +53,7 @@ Designed a star schema:
 - Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities.Park Street recorded the highest overall foot traffic across all periods.
 - Market Street followed closely as the second busiest street.
 - Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
-  
+- 
 
 ## 💡 **Business Recommendations**
 - Retailers and food outlets on Park and Market Streets should prioritize staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
@@ -62,4 +62,30 @@ Designed a star schema:
 - Use peak hours and peak locations for launching marketing campaigns or city events
 - Digital signboards and billboards will see maximum impressions in Park and Market Streets during Feb–Mar and Nov–Dec.
 
+
+
+
+## Screenshots
+### 2020 (No data of last year - 2019)
+
+![image](https://github.com/user-attachments/assets/fd6e9245-d5cf-469f-913e-5c4c62ac2682)
+
+### 2021
+
+![image](https://github.com/user-attachments/assets/faed73b3-1f7e-4958-bb2d-e9004fc0a022)
+
+### 2022
+
+![image](https://github.com/user-attachments/assets/3a550566-541c-475f-bdb0-95dfb73dd769)
+### 2023
+
+![image](https://github.com/user-attachments/assets/d963cc0e-d864-4956-a18f-7cb13180c878)
+
+### 2024
+
+![image](https://github.com/user-attachments/assets/74e8b60d-118d-4be8-9175-07d3433ebde0)
+
+### 2025 (only have data until April)
+
+![image](https://github.com/user-attachments/assets/e6604de3-4b53-48df-a30b-52372842d624)
 
