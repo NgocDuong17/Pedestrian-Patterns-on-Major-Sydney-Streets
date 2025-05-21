@@ -1,0 +1,260 @@
+USE PedestrianProject
+
+			-- CREATE STAGING TABLE
+DROP TABLE IF EXISTS [dbo].[PedesStaging]
+
+CREATE TABLE [dbo].[PedesStaging](
+	[Location_Code] [nvarchar](255) NULL,
+	[Location_Name] [nvarchar](255) NULL,
+	[Date] [datetime] NULL,
+	[Hour] [varchar](10) NULL,
+	[Total_Count] [int] NULL,
+	[Day] [nvarchar](255) NULL,
+	[Day_No] [varchar](10) NULL,
+	[Week] [float]  NULL,
+	[Last_Week] [int] NULL,
+	[Previous_4_Day_Time_Avg] [int] NULL,
+	[Previous_52_Day_Time_Avg] [float] NULL,
+	[Last_Year] [int] NULL,
+	
+	) ON [PRIMARY]
+
+----------------------------------------------------------------------------------------------------
+			-- I. CLEAN THE ORGINAL DATA 
+
+-- 1. Drop column "Object ID" since it is redundant
+ALTER TABLE Automatic_Hourly_Pedestrian_Count 
+DROP COLUMN ObjectId
+
+-- 2. Check missing values
+SELECT
+  SUM(CASE WHEN [Location_code] IS NULL THEN 1 ELSE 0 END) AS Location_code_nulls,
+  SUM(CASE WHEN [Location_Name] IS NULL THEN 1 ELSE 0 END) AS Location_Name_nulls,
+  SUM(CASE WHEN [Date] IS NULL THEN 1 ELSE 0 END) AS Date_nulls,
+  SUM(CASE WHEN [TotalCount] IS NULL THEN 1 ELSE 0 END) AS TotalCount_nulls,
+  SUM(CASE WHEN [Hour] IS NULL THEN 1 ELSE 0 END) AS Hour_nulls,
+  SUM(CASE WHEN [Day] IS NULL THEN 1 ELSE 0 END) AS Day_nulls,
+  SUM(CASE WHEN [DayNo] IS NULL THEN 1 ELSE 0 END) AS DayNo_nulls,
+  SUM(CASE WHEN [Week] IS NULL THEN 1 ELSE 0 END) AS Week_nulls,
+  SUM(CASE WHEN [LastWeek] IS NULL THEN 1 ELSE 0 END) AS LastWeek_nulls,
+  SUM(CASE WHEN [Previous4DayTimeAvg] IS NULL THEN 1 ELSE 0 END) AS Previous4DayTimeAvg_nulls,
+  SUM(CASE WHEN [LastYear] IS NULL THEN 1 ELSE 0 END) AS LastYear_nulls,
+  SUM(CASE WHEN [Previous52DayTimeAvg] IS NULL THEN 1 ELSE 0 END) AS Previous52DayTimeAvg_nulls
+FROM [dbo].[Automatic_Hourly_Pedestrian_Count];
+
+-- => the number of null values in the last 4 columns might be because there is no data for that period last week/ 4 days, last year and 53 days. 
+-- Therefore, we can leave the null values as they are and only focus on the middle 3 years where (2024-2023-2022) which we have sufficient data about
+
+-- 3. Check duplicates 
+SELECT *, COUNT(*) AS DuplicateCount
+FROM Automatic_Hourly_Pedestrian_Count
+GROUP BY 
+    [Location_code],
+    [Location_Name],
+    [Date],
+    [TotalCount],
+    [Hour],
+    [Day],
+    [DayNo],
+    [Week],
+    [LastWeek],
+    [Previous4DayTimeAvg],
+    [LastYear],
+    [Previous52DayTimeAvg]
+HAVING COUNT(*) > 1;
+
+
+-- III. COPY data to staging table
+
+INSERT INTO  [dbo].[PedesStaging](
+	[Location_Code],
+	[Location_Name],
+	[Date],
+	[Hour],
+	[Total_Count],
+	[Day],
+	[Day_No],
+	[Week],
+	[Last_Week],
+	[Previous_4_Day_Time_Avg],
+	[Last_Year],
+	[Previous_52_Day_Time_Avg]
+)
+SELECT [Location_code],
+	[Location_Name],
+	[Date],
+	[Hour],
+	[TotalCount],
+	[Day],
+	[DayNo],
+	[Week],
+	[LastWeek],
+	[Previous4DayTimeAvg],
+	[LastYear],
+	[Previous52DayTimeAvg]
+  FROM [dbo].[Automatic_Hourly_Pedestrian_Count]
+
+
+
+--------------------------------------------------------------------------------------------------
+			--II. Manipulate data
+-- 1. Column 'Date'
+-- Extract Date value from datetime column "Date"
+-- Add new column
+ALTER TABLE [dbo].[PedesStaging]
+ADD Count_Date date;
+
+-- Update the value for new column
+UPDATE [dbo].[PedesStaging]
+SET
+	Count_Date = CAST([Date] AS DATE)
+    
+
+-- 2. Column 'Week'
+-- The float number in the Week column consists of the Year of the week and the week number, divided by the '.'
+-- Add 2 new columns 
+ALTER TABLE [dbo].[PedesStaging]
+ADD Year varchar(10);
+ALTER TABLE [dbo].[PedesStaging]
+ADD Week_No varchar(10);
+
+-- Set values
+UPDATE [dbo].[PedesStaging]
+SET
+	Year = YEAR(Count_Date),
+    Week_No = DATEPART(WEEK, Count_Date)									--RIGHT(CAST(Week AS VARCHAR), LEN(CAST(Week AS VARCHAR)) - CHARINDEX('.', CAST(Week AS VARCHAR)));
+
+
+-- 3. Column 'Day' and 'Day_No'
+-- There is an inconsistence between the Date and column 'Day', 'Week_No','Day_No'.
+-- Ex: 15 Feb 2025 has 2 values Friday and Saturday in 'Day' column and '5'AND '6' in 'Day_No'
+
+ALTER TABLE [dbo].[PedesStaging]
+ADD Added_Day varchar(20);
+ALTER TABLE [dbo].[PedesStaging]
+ADD Added_Day_No varchar(10);
+
+--ALTER TABLE Automatic_Hourly_Pedestrian_Count DROP COLUMN Added_Day;
+-- Set values
+UPDATE [dbo].[PedesStaging]
+SET
+	Added_Day = DATENAME(WEEKDAY, Count_Date),
+    Added_Day_No = DATEPART(WEEKDAY, Count_Date);				-- 1 is Sunday and 7 is Saturday
+
+
+-----------------------------------------------------------------------------------------------------------------
+			-- IV. Define Star Schema
+
+--1. Drop tables if exist any
+DROP TABLE IF EXISTS FactPedestrianCount
+
+DROP TABLE IF EXISTS DimDate;
+DROP TABLE IF EXISTS DimLocation;
+
+--2. Create Dim tables
+-- DIM Location
+CREATE TABLE DimLocation (
+	Location_Code	nvarchar(255)	not null,	-- natural key
+	Location_Name	nvarchar(255)	not null,	-- name of location
+PRIMARY KEY (Location_Code))
+
+
+-- DIM Date
+CREATE TABLE DimDate (
+	Date			date					not null,	-- natural key
+	Day				nvarchar(255)			null,		-- The name of the day (e.g., "Monday", "Tuesday").
+	Day_No			varchar(10)				null,		-- The numeric value of the day in the week (e.g., 1 for Monday, 2 for Tuesday).
+	Week_No			varchar(10)				null,		-- The week number of the year (e.g., 13 for the 13th week).
+	Month			varchar(10)				null,		-- The numeric value of the month (e.g., 1 for January, 2 for February).
+	Quarter			varchar(10)				null,		-- The quarter of the year (e.g., Q1, Q2, Q3, Q4).
+	Year			varchar(10)				null,		-- The year of the date (e.g., 2025)
+PRIMARY KEY(Date)
+)
+
+
+--3. Create fact table
+CREATE TABLE FactPedestrianCount (
+	FactID						int identity	not null	PRIMARY KEY,	-- Unique identifier for each record
+	Location_Code				nvarchar(255)	not null,		-- foreign key,
+	Date						date			not null,		-- foreign key
+	Count_Time					varchar(10)		not null,		-- The count time of the pedestrian count period
+	Total_Count					int				not null,		-- The total number of pedestrians counted during the given period.
+	Last_Week					int				null,			-- The pedestrian count from the same time last week for comparison.
+	Previous_4_Day_Time_Avg		int				null,			-- The average pedestrian count from the same time previous 4 days for comparison.
+	Previous_52_Day_Time_Avg	int				null,			-- The average pedestrian count over the past 52 days at the same period for comparison.
+	Last_Year					int				null			-- The pedestrian count from the same time last year for comparison.
+,
+FOREIGN KEY (Location_Code) REFERENCES DimLocation (Location_Code),
+FOREIGN KEY (Date) REFERENCES DimDate (Date)
+)
+
+---------------------------------------------------------------------------------------------------------
+			-- V. Copy Data from Staging Table to Star Schema
+-- 1. Dim Location
+INSERT INTO DimLocation
+		(Location_Code, Location_Name)
+SELECT DISTINCT p.Location_Code, p.Location_Name
+FROM PedesStaging p 
+
+-- 2. Dim Date
+
+
+-- Find out that there is a Typo in the raw data. the date 15 Feb 2020 turned out to have 2 values of Day_No (Fri and Sat). Therefore, proceed to
+-- create a new values for DimDate
+-- The data is from 14 Feb 2020 to 02 April 2025
+/*DECLARE @StartDate DATE = '2020-02-14';
+DECLARE @EndDate DATE = '2025-04-02';
+
+WITH DateRange AS (
+	SELECT @StartDate AS DateCount
+	UNION ALL
+	SELECT DATEADD(DAY,1, DateCount)
+	FROM DateRange
+	WHERE DATEADD(DAY,1,DateCount) <= @EndDate)
+
+INSERT INTO DimDate (Date, Day, Day_No, Week_No, Month, Quarter, Year)
+SELECT  
+    CAST(DateCount AS date) AS Date, 
+	DATENAME(WEEKDAY, DateCount) AS Day,          
+    DATEPART(WEEKDAY, DateCount) AS Day_No,
+    DATEPART(WEEK, DateCount) AS Week_No, 
+    MONTH(DateCount) AS Month, 
+    DATEPART(QUARTER, DateCount) AS Quarter, 
+    YEAR(DateCount) AS Year
+FROM DateRange
+OPTION (MAXRECURSION 0)
+*/
+
+
+INSERT INTO DimDate (Date, Day, Day_No, Week_No, Month, Quarter, Year)
+SELECT  DISTINCT p.Count_Date, p.Added_Day, p.Added_Day_No, p.Week_No, MONTH(p.Date), DATEPART(QUARTER, p.Date), p.Year
+FROM PedesStaging p 
+
+
+SELECT * FROM DimDate
+SELECT * FROM Automatic_Hourly_Pedestrian_Count
+-- 3. Fact table
+INSERT INTO FactPedestrianCount
+		(Location_Code,
+		Date,
+		Count_Time,
+		Total_Count,
+		Last_Week,
+		Previous_4_Day_Time_Avg,
+		Previous_52_Day_Time_Avg,
+		Last_Year
+)
+SELECT	l.Location_Code,
+		d.Date,
+		p.Hour,
+		p.Total_Count,
+		p.Last_Week,
+		p.Previous_4_Day_Time_Avg,
+		p.Previous_52_Day_Time_Avg,
+		p.Last_Year
+FROM PedesStaging p 
+LEFT JOIN DimLocation l			ON l.Location_Code = p.Location_Code
+LEFT JOIN DimDate d				ON d.Date = p.Count_Date
+
+
+SELECT* FROM FactPedestrianCount
