@@ -34,25 +34,23 @@ Designed a star schema:
 
 
 ### 📈 **Dashboard Highlights (Power BI)**
-•	Line charts for average of pedestrian count over time (hourly) compared to last week and last year
-•	Heatmaps showing pedestrian volume by month and location.
-•	Bar charts comparing average traffic across day of the week.
-•	Ribbon chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
-•	Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
-•	KPI Cards showing the % short-term and long-term pedestrian movement changes (4-day moving average and 52 days in turn)
+- Line charts for average of pedestrian count over time (hourly) compared to last week and last year
+- Heatmaps showing pedestrian volume by month and location.
+- Bar charts comparing average traffic across day of the week.
+- Ribbon chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
+- Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
+- KPI Cards showing the % short-term and long-term pedestrian movement changes (4-day moving average and 52 days in turn)
 
 
 
 ## 🔍 **Insights Discovered**
-•	Peak pedestrian activity consistently occurs between 1:00 PM – 5:00 PM (peak ar 5:00 PM), likely due to after-work traffic and shopping.
-•	Lowest pedestrian volume occurs from 11:00 PM – 5:00 AM, when most public and commercial activity is minimal.
-•	Thursday and Friday were consistently the busiest weekdays, indicating increased mid-to-late week engagement in city areas.
-•	Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities.Park Street recorded the highest overall foot traffic across all periods.
-•	Market Street followed closely as the second busiest street.
-
-
-•	Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
-
+- Peak pedestrian activity consistently occurs between 1:00 PM – 5:00 PM (peak ar 5:00 PM), likely due to after-work traffic and shopping.
+- Lowest pedestrian volume occurs from 11:00 PM – 5:00 AM, when most public and commercial activity is minimal.
+- Thursday and Friday were consistently the busiest weekdays, indicating increased mid-to-late week engagement in city areas.
+- Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities.Park Street recorded the highest overall foot traffic across all periods.
+- Market Street followed closely as the second busiest street.
+- Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
+- 
 
 ## 💡 **Business Recommendations**
 - Retailers and food outlets on Park and Market Streets should prioritize staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
