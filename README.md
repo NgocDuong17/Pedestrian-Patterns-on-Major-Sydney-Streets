@@ -44,8 +44,11 @@ Designed a star schema:
 - Bar charts comparing average traffic across the day of the week.
 - Column chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
 - Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
+- 
+<img width="311" height="58" alt="image" src="https://github.com/user-attachments/assets/5a168d66-67ab-464f-9861-1117feb1bca1" />
 
-<img width="281" height="57" alt="image" src="https://github.com/user-attachments/assets/cdea16df-eb65-4109-8c89-ee6959061e59" />
+<img width="313" height="226" alt="image" src="https://github.com/user-attachments/assets/84385d1e-68b2-4352-835f-445e2bb62514" />
+
 
 <img width="429" height="288" alt="image" src="https://github.com/user-attachments/assets/8d5016cc-526b-4a2e-9c86-87bb2c5913af" />
 
@@ -71,21 +74,26 @@ Designed a star schema:
 
 ## Screenshots
 ### 2020 (No data of last year - 2019)
+<img width="1282" height="715" alt="image" src="https://github.com/user-attachments/assets/f02063b6-72a9-42fd-b133-c71f24f9b865" />
 
 
 ### 2021
+<img width="1281" height="728" alt="image" src="https://github.com/user-attachments/assets/fe20331e-8ddd-4a37-a925-f1823863c6ca" />
 
 
 ### 2022
-<img width="1272" height="714" alt="image" src="https://github.com/user-attachments/assets/0016db1a-de26-45b2-9e7b-7dd002313060" />
+<img width="1282" height="719" alt="image" src="https://github.com/user-attachments/assets/3e31cbff-46a1-4e6f-87f9-17689a22e85f" />
 
 
 ### 2023
+<img width="1280" height="715" alt="image" src="https://github.com/user-attachments/assets/02fbe23a-623a-41f6-af8a-ebdbb1539501" />
 
 
 ### 2024
+<img width="1285" height="724" alt="image" src="https://github.com/user-attachments/assets/bb629d6d-3b63-421b-8002-c5adc5d9a96b" />
 
 
 ### 2025 (only have data until April)
+<img width="1280" height="717" alt="image" src="https://github.com/user-attachments/assets/f0e912fc-6ca6-43b2-a6ce-bccee75ced02" />
 
 
