@@ -40,28 +40,27 @@ Designed a star schema:
 
 
 ### 📈 **Dashboard Highlights (Power BI)**
-- Line charts for average of pedestrian count over time (hourly) compared to last week and last year
-- Heatmaps showing pedestrian volume by month and location.
-- Bar charts comparing average traffic across day of the week.
-- Ribbon chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
+- Line charts for the average of pedestrian count of the current week (hourly) compared to last week and last year
+- Bar charts comparing average traffic across the day of the week.
+- Column chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
 - Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
-- KPI Cards showing the % short-term and long-term pedestrian movement changes (4-day moving average and 52 days in turn)
 
-![image](https://github.com/user-attachments/assets/4f56275d-7fb3-47fc-b070-3910ed070f19)
+<img width="281" height="57" alt="image" src="https://github.com/user-attachments/assets/cdea16df-eb65-4109-8c89-ee6959061e59" />
 
+<img width="429" height="288" alt="image" src="https://github.com/user-attachments/assets/8d5016cc-526b-4a2e-9c86-87bb2c5913af" />
 
 
 ## 🔍 **Insights Discovered**
 - Peak pedestrian activity consistently occurs between 1:00 PM – 5:00 PM (peak ar 5:00 PM), likely due to after-work traffic and shopping.
 - Lowest pedestrian volume occurs from 11:00 PM – 5:00 AM, when most public and commercial activity is minimal.
 - Thursday and Friday were consistently the busiest weekdays, indicating increased mid-to-late week engagement in city areas.
-- Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities.Park Street recorded the highest overall foot traffic across all periods.
-- Market Street followed closely as the second busiest street.
+- Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities. Park Street recorded the highest overall foot traffic across all periods.
+- Market Street is closely followed as the second busiest street.
 - Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
 - 
 
 ## 💡 **Business Recommendations**
-- Retailers and food outlets on Park and Market Streets should prioritize staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
+- Retailers and food outlets on Park and Market Streets should prioritise staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
 - Transport services should increase frequency near 4–6 PM, especially on Thursdays and Fridays
 - Consider pedestrian flow improvements (crosswalks, signage) in high-traffic areas to improve safety and flow.
 - Use peak hours and peak locations for launching marketing campaigns or city events
@@ -73,24 +72,20 @@ Designed a star schema:
 ## Screenshots
 ### 2020 (No data of last year - 2019)
 
-![image](https://github.com/user-attachments/assets/fd6e9245-d5cf-469f-913e-5c4c62ac2682)
 
 ### 2021
 
-![image](https://github.com/user-attachments/assets/faed73b3-1f7e-4958-bb2d-e9004fc0a022)
 
 ### 2022
+<img width="1272" height="714" alt="image" src="https://github.com/user-attachments/assets/0016db1a-de26-45b2-9e7b-7dd002313060" />
 
-![image](https://github.com/user-attachments/assets/3a550566-541c-475f-bdb0-95dfb73dd769)
+
 ### 2023
 
-![image](https://github.com/user-attachments/assets/d963cc0e-d864-4956-a18f-7cb13180c878)
 
 ### 2024
 
-![image](https://github.com/user-attachments/assets/74e8b60d-118d-4be8-9175-07d3433ebde0)
 
 ### 2025 (only have data until April)
 
-![image](https://github.com/user-attachments/assets/e6604de3-4b53-48df-a30b-52372842d624)
 
