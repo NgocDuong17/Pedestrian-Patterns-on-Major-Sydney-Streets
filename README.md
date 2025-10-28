@@ -44,7 +44,8 @@ Designed a star schema:
 - Bar charts comparing average traffic across the day of the week.
 - Column chart ranking locations by quarterly foot traffic, highlighting which streets consistently had the highest volume of pedestrians over time.
 - Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
-- 
+- Dynamic Silcer Buttons (Open and Close), providing more handy tool
+
 <img width="311" height="58" alt="image" src="https://github.com/user-attachments/assets/5a168d66-67ab-464f-9861-1117feb1bca1" />
 <br/>
 <img width="313" height="226" alt="image" src="https://github.com/user-attachments/assets/84385d1e-68b2-4352-835f-445e2bb62514" />
@@ -59,7 +60,6 @@ Designed a star schema:
 - Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities. Park Street recorded the highest overall foot traffic across all periods.
 - Market Street is closely followed as the second busiest street.
 - Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
-- Dynamic Silcer Buttons (Open and Close), more handy tools
 
 ## 💡 **Business Recommendations**
 - Retailers and food outlets on Park and Market Streets should prioritise staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
