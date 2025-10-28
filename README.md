@@ -59,7 +59,7 @@ Designed a star schema:
 - Weekends showed moderate traffic but less than expected, suggesting a possible shift toward weekday urban activities. Park Street recorded the highest overall foot traffic across all periods.
 - Market Street is closely followed as the second busiest street.
 - Seasonal surges were recorded in February–March and November–December, likely driven by summer holidays, back-to-school periods, and holiday shopping
-- 
+- Dynamic Silcer Buttons (Open and Close), more handy tools
 
 ## 💡 **Business Recommendations**
 - Retailers and food outlets on Park and Market Streets should prioritise staffing and promotional campaigns during peak hours and months (late afternoon and holiday seasons).
