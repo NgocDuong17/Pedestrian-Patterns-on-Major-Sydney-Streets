@@ -46,12 +46,11 @@ Designed a star schema:
 - Slicer filters enabled dynamic filtering by year range, allowing users to isolate specific time periods for focused analysis.
 - 
 <img width="311" height="58" alt="image" src="https://github.com/user-attachments/assets/5a168d66-67ab-464f-9861-1117feb1bca1" />
-
+<br/>
 <img width="313" height="226" alt="image" src="https://github.com/user-attachments/assets/84385d1e-68b2-4352-835f-445e2bb62514" />
-
-
+<br/>
 <img width="429" height="288" alt="image" src="https://github.com/user-attachments/assets/8d5016cc-526b-4a2e-9c86-87bb2c5913af" />
-
+<br/>
 
 ## 🔍 **Insights Discovered**
 - Peak pedestrian activity consistently occurs between 1:00 PM – 5:00 PM (peak ar 5:00 PM), likely due to after-work traffic and shopping.
