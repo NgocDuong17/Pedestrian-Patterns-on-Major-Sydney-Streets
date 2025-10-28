@@ -1,7 +1,8 @@
 # Pedestrian-Patterns-on-Major-Sydney-Streets
 ## 📌 **Project Overview**
 
- ![image](https://github.com/user-attachments/assets/8df619e2-dd9f-4fa6-b70f-3c70ca98afa5)
+<img width="1282" height="720" alt="image" src="https://github.com/user-attachments/assets/ba6507db-7cc3-48c1-a404-1df8f10163b2" />
+
  
 This project explores pedestrian traffic patterns across four major streets (Bridge Street, Elizabeth Street, Market Street, and Park Street) from 2020 to early 2025. The goal was to perform robust data cleaning and transformation using Microsoft SQL Server, design a star schema for analytical querying, and build an interactive Power BI dashboard to uncover insights and recommend strategies for stakeholders such as urban planners, retailers, and public safety officials.
 
@@ -11,7 +12,7 @@ data source: https://data.cityofsydney.nsw.gov.au/datasets/66421e1dfe264bb19c761
 ## 🛠 **Tools & Technologies**
 SQL Server – Data cleaning, transformation, and schema design
 
-Power BI – Dashboard development and visualization
+Power BI – Dashboard development and visualisation
 
 DAX – Custom calculations for KPIs and trend analysis
 
